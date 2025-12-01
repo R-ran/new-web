@@ -123,3 +123,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Markdown image caption styling - multiple methods for browser compatibility */
+
+/* Method 1: Direct class-based targeting (most reliable) */
+.markdown-content p.markdown-caption {
+  @apply text-center text-sm text-slate-500 !important;
+}
+
+/* Method 2: Data attribute targeting */
+.markdown-content p[data-is-caption="true"] {
+  @apply text-center text-sm text-slate-500 !important;
+}
+
+/* Method 3: Using :has() selector (modern browsers) */
+.markdown-content p:has(> em.markdown-caption-text:only-child) {
+  @apply text-center text-sm text-slate-500 !important;
+}
+
+/* Method 4: Target paragraphs that contain only a single em element */
+.markdown-content p:has(> em.markdown-caption-text:only-child) > em {
+  @apply block text-center text-sm text-slate-500 !important;
+}
+
+/* Method 5: Adjacent sibling selector - if image is followed by paragraph with only em */
+.markdown-content img + p:has(> em.markdown-caption-text:only-child) {
+  @apply text-center text-sm text-slate-500 !important;
+}
+
+.markdown-content img + p > em.markdown-caption-text:only-child {
+  @apply block text-center text-sm text-slate-500 !important;
+}
+
+

@@ -4,29 +4,41 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { InquiryDialog } from "@/components/inquiry-dialog"
+import { ProductCard } from "@/components/products/product-card"
 
 const productTypes = [
   {
+    id: "netting-1",
     name: "Shade Net",
     description: "High-quality shade netting designed for solar farms, greenhouses, and construction applications. Provides excellent UV protection and temperature control while allowing air circulation.",
     image: "/shade.png",
+    price: 600,
+    category: "网状产品",
   },
   {
+    id: "netting-2",
     name: "Safety Net",
     description: "Durable safety netting designed for construction sites, sports facilities, and industrial applications. Provides reliable protection and fall prevention with high strength and weather resistance.",
     image: "/mesh.png",
+    price: 800,
+    category: "网状产品",
   },
   {
+    id: "netting-3",
     name: "Mesh Net",
     description: "Versatile mesh netting suitable for packaging, fencing, and agricultural applications. Features excellent breathability and durability for various industrial and commercial uses.",
     image: "/mesh.png",
+    price: 450,
+    category: "网状产品",
   },
   {
+    id: "netting-4",
     name: "Agricultural Netting",
     description: "Specialized netting for agricultural applications including crop protection, bird control, and greenhouse covering. Designed to withstand outdoor conditions while protecting crops.",
     image: "/shade.png",
+    price: 700,
+    category: "网状产品",
   },
 ]
 
@@ -73,22 +85,12 @@ export default function NettingPage() {
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-4xl font-bold text-foreground">Types of Netting</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {productTypes.map((product, index) => (
-              <Card key={index} className="overflow-hidden border border-border shadow-sm transition hover:shadow-lg">
-                <div className="relative h-48 w-full">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="300px" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                  <Button
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={() => setIsDialogOpen(true)}
-                  >
-                    Send Inquiry Now
-                  </Button>
-                </CardContent>
-              </Card>
+            {productTypes.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onInquiry={() => setIsDialogOpen(true)}
+              />
             ))}
           </div>
      

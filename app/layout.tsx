@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { CartProvider } from "@/components/context/cart-context"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -40,10 +41,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <Analytics />
+        <CartProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <Analytics />
+        </CartProvider>
       </body>
     </html>
   )

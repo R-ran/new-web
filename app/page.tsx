@@ -2,9 +2,115 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Zap, Shield, TrendingUp, Users, Award, Globe } from "lucide-react"
+import { ArrowRight, Zap, Shield, TrendingUp, Award, Globe } from "lucide-react"
 
 export default function HomePage() {
+  const products = [
+    {
+      name: "Fire Resistant Scaffold Sheeting",
+      category: "PE Tarpaulin",
+      application: "Construction",
+      image: "/ai-technology-quality-control.jpg",
+      href: "/products/pe-tarpaulin",
+      label: "BEST SELLER",
+    },
+    {
+      name: "Shade Net",
+      category: "Netting",
+      application: "Solar Farm, Greenhouse",
+      image: "/shade.png",
+      href: "/products/netting",
+      label: "NEW ARRIVAL",
+    },
+    {
+      name: "Heavy-Duty Snow Removal Tarp",
+      category: "Snow Tarp",
+      application: "Winter Protection",
+      image: "/snow.jpg",
+      href: "/products/snow-tarp",
+      label: "POPULAR",
+    },
+    {
+      name: "PVC Tarpaulin Roll",
+      category: "Other Tarpaulin",
+      application: "Tent, Truck, Shading",
+      image: "/other.png",
+      href: "/products/other-tarpaulin",
+      label: "RELIABLE",
+    },
+    {
+      name: "Jumbo Bag",
+      category: "Jumbo Bag",
+      application: "Bulk Material Storage",
+      image: "/jumbo-bag.png",
+      href: "/products/jumbo-bag",
+      label: "EFFICIENT",
+    },
+    {
+      name: "Flame Retardant Scaffold Sheeting",
+      category: "PE Tarpaulin",
+      application: "Construction, Transportation",
+      image: "/ai-technology-quality-control.jpg",
+      href: "/products/pe-tarpaulin",
+      label: "PREMIUM",
+    },
+    {
+      name: "Safety Net",
+      category: "Netting",
+      application: "Safety, Fencing",
+      image: "/mesh.png",
+      href: "/products/netting",
+      label: "VALUE",
+    },
+    {
+      name: "Scaffolding Tarpaulin",
+      category: "PE Tarpaulin",
+      application: "Construction, Humid areas",
+      image: "/ai-technology-quality-control.jpg",
+      href: "/products/pe-tarpaulin",
+      label: "HIGH QUALITY",
+    },
+  ]
+
+  const technologies = [
+    {
+      icon: Zap,
+      title: "High Efficiency",
+      description:
+        "Advanced cell technology delivers industry-leading conversion efficiency up to 22.76%, maximizing energy output for your investment.",
+    },
+    {
+      icon: Shield,
+      title: "Superior Durability",
+      description:
+        "Engineered to withstand extreme weather conditions with enhanced mechanical load resistance and superior corrosion protection.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Smart Innovation",
+      description:
+        "Incorporating the latest innovations including N-type technology and advanced junction designs for optimal performance.",
+    },
+  ]
+
+  const solutions = [
+    {
+      title: "Residential Solutions",
+      description:
+        "Make solar available for your home with our residential solar panels and complete home energy systems. Reduce your energy bills and environmental impact.",
+    },
+    {
+      title: "Commercial & Industrial",
+      description:
+        "Powerful, cost-effective solar solutions for businesses. Our commercial systems are built for performance, durability, and maximum ROI.",
+    },
+    {
+      title: "Utility-Scale Projects",
+      description:
+        "Large-scale solar solutions designed for utility companies and power producers. High power output and proven reliability at massive scale.",
+    },
+  ]
+
   return (
     <main>
       {/* Hero Section */}
@@ -37,72 +143,7 @@ export default function HomePage() {
           <h2 className="mb-12 text-center text-4xl font-bold text-balance">Recommended Products</h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                name: "Fire Resistant Scaffold Sheeting",
-                category: "PE Tarpaulin",
-                application: "Construction",
-                image: "/ai-technology-quality-control.jpg",
-                href: "/products/pe-tarpaulin",
-                label: "BEST SELLER",
-              },
-              {
-                name: "Shade Net",
-                category: "Netting",
-                application: "Solar Farm, Greenhouse",
-                image: "/shade.png",
-                href: "/products/netting",
-                label: "NEW ARRIVAL",
-              },
-              {
-                name: "Heavy-Duty Snow Removal Tarp",
-                category: "Snow Tarp",
-                application: "Winter Protection",
-                image: "/snow.jpg",
-                href: "/products/snow-tarp",
-                label: "POPULAR",
-              },
-              {
-                name: "PVC Tarpaulin Roll",
-                category: "Other Tarpaulin",
-                application: "Tent, Truck, Shading",
-                image: "/other.png",
-                href: "/products/other-tarpaulin",
-                label: "RELIABLE",
-              },
-              {
-                name: "Jumbo Bag",
-                category: "Jumbo Bag",
-                application: "Bulk Material Storage",
-                image: "/jumbo-bag.png",
-                href: "/products/jumbo-bag",
-                label: "EFFICIENT",
-              },
-              {
-                name: "Flame Retardant Scaffold Sheeting",
-                category: "PE Tarpaulin",
-                application: "Construction, Transportation",
-                image: "/ai-technology-quality-control.jpg",
-                href: "/products/pe-tarpaulin",
-                label: "PREMIUM",
-              },
-              {
-                name: "Safety Net",
-                category: "Netting",
-                application: "Safety, Fencing",
-                image: "/mesh.png",
-                href: "/products/netting",
-                label: "VALUE",
-              },
-              {
-                name: "Scaffolding Tarpaulin",
-                category: "PE Tarpaulin",
-                application: "Construction, Humid areas",
-                image: "/ai-technology-quality-control.jpg",
-                href: "/products/pe-tarpaulin",
-                label: "HIGH QUALITY",
-              },
-            ].map((product, index) => (
+            {products.map((product, index) => (
               <Link key={index} href={product.href}>
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full cursor-pointer">
                   <div className="relative aspect-[3/4] bg-muted">
@@ -176,8 +217,10 @@ export default function HomePage() {
                 </Card>
               </div>
 
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Learn More About Us
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white" asChild>
+                <Link href="/about">
+                  Learn More About Us
+                </Link>
               </Button>
             </div>
 
@@ -204,26 +247,7 @@ export default function HomePage() {
           </p>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                icon: Zap,
-                title: "High Efficiency",
-                description:
-                  "Advanced cell technology delivers industry-leading conversion efficiency up to 22.76%, maximizing energy output for your investment.",
-              },
-              {
-                icon: Shield,
-                title: "Superior Durability",
-                description:
-                  "Engineered to withstand extreme weather conditions with enhanced mechanical load resistance and superior corrosion protection.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Smart Innovation",
-                description:
-                  "Incorporating the latest innovations including N-type technology and advanced junction designs for optimal performance.",
-              },
-            ].map((tech, index) => (
+            {technologies.map((tech, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
                   <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
@@ -257,31 +281,12 @@ export default function HomePage() {
               <h2 className="mb-6 text-4xl font-bold text-balance">Solutions</h2>
 
               <div className="space-y-6">
-                <div>
-                  <h3 className="mb-2 text-xl font-bold">Residential Solutions</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Make solar available for your home with our residential solar panels and complete home energy
-                    systems. Reduce your energy bills and environmental impact.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="mb-2 text-xl font-bold">Commercial & Industrial</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Powerful, cost-effective solar solutions for businesses. Our commercial systems are built for
-                    performance, durability, and maximum ROI.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="mb-2 text-xl font-bold">Utility-Scale Projects</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Large-scale solar solutions designed for utility companies and power producers. High power output
-                    and proven reliability at massive scale.
-                  </p>
-                </div>
-
-                
+                {solutions.map((solution, index) => (
+                  <div key={index}>
+                    <h3 className="mb-2 text-xl font-bold">{solution.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -298,18 +303,10 @@ export default function HomePage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
             {[
-              {
-                query: "customer+service+chat+conversation+mobile",
-              },
-              {
-                query: "whatsapp+business+chat+interface",
-              },
-              {
-                query: "customer+support+messaging+app",
-              },
-              {
-                query: "wechat+business+customer+service",
-              },
+              { query: "customer+service+chat+conversation+mobile" },
+              { query: "whatsapp+business+chat+interface" },
+              { query: "customer+support+messaging+app" },
+              { query: "wechat+business+customer+service" },
             ].map((item, index) => (
               <div key={index} className="aspect-[3/4] rounded-lg overflow-hidden shadow-lg bg-muted">
                 <div
@@ -325,11 +322,15 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-              —— More About us
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto" asChild>
+              <Link href="/about">
+                —— More About us
+              </Link>
             </Button>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-              —— Call Us : +86 13327798649
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto" asChild>
+              <Link href="/contact">
+                —— Call Us : +86 13327798649
+              </Link>
             </Button>
           </div>
         </div>
@@ -410,8 +411,10 @@ export default function HomePage() {
                   <div className="mb-2 text-sm text-muted-foreground">{news.date}</div>
                   <h3 className="mb-3 text-xl font-bold">{news.title}</h3>
                   <p className="mb-4 text-muted-foreground leading-relaxed">{news.excerpt}</p>
-                  <Button variant="outline" className="w-full bg-transparent">
-                    Read More
+                  <Button variant="outline" className="w-full bg-transparent" asChild>
+                    <Link href="/news">
+                      Read More
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -419,8 +422,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      
     </main>
   )
 }

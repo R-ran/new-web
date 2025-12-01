@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { useMemo, useState } from "react"
-import { Menu, X, Globe, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react"
+import { useCart } from "@/components/context/cart-context"
 
 type NavChild = {
   label: string
@@ -18,6 +19,8 @@ type NavItem = {
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null)
+  const { getItemCount } = useCart()
+  const itemCount = getItemCount()
 
   const navItems = useMemo<NavItem[]>(
     () => [
@@ -31,7 +34,6 @@ export function SiteHeader() {
           { label: "Snow Tarp", href: "/products/snow-tarp" },
           { label: "Other Tarpaulin", href: "/products/other-tarpaulin" },
           { label: "Jumbo Bag", href: "/products/jumbo-bag" },
-          
         ],
       },
       {
@@ -65,7 +67,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-2">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded bg-primary" />
-            <span className="text-xl font-bold text-foreground">JINKO SOLAR</span>
+            <span className="text-xl font-bold text-foreground">Company Name</span>
           </div>
         </Link>
 
@@ -104,9 +106,16 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Globe className="h-4 w-4 text-muted-foreground" />
-          <button className="text-sm font-medium transition-colors hover:text-primary">English</button>
+        <div className="hidden items-center gap-4 md:flex">
+          <Link href="/cart" className="relative flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+            <ShoppingBag className="h-5 w-5" />
+            Cart
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </Link>
         </div>
 
         <button className="md:hidden" onClick={() => setIsMenuOpen((prev) => !prev)} aria-label="Toggle menu">
@@ -158,9 +167,20 @@ export function SiteHeader() {
                 )}
               </div>
             ))}
-            <div className="mt-4 flex items-center gap-2 border-t pt-4">
-              <Globe className="h-4 w-4 text-muted-foreground" />
-              <button className="text-sm font-medium transition-colors hover:text-primary">English</button>
+            <div className="mt-4 flex flex-col gap-4 border-t pt-4">
+              <Link
+                href="/cart"
+                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                onClick={closeMobileMenu}
+              >
+                <ShoppingBag className="h-5 w-5" />
+                Cart
+                {itemCount > 0 && (
+                  <span className="h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </nav>
         </div>

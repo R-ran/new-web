@@ -4,29 +4,41 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { ProductCard } from "@/components/products/product-card"
 import { InquiryDialog } from "@/components/inquiry-dialog"
 
 const productTypes = [
   {
+    id: "other-tarpaulin-1",
     name: "PVC Tarpaulin Roll",
     description: "High-quality PVC tarpaulin available in rolls for various applications. These tarps are ideal for tents, truck covers, and shading applications with excellent durability and weather resistance.",
     image: "/other.png",
+    price: 1500,
+    category: "其他帆布",
   },
   {
+    id: "other-tarpaulin-2",
     name: "Vinyl Coated Tarpaulin",
     description: "Vinyl coated tarps with enhanced strength and durability. Features increased resistance to heavy abrasion, UV rays, oil, mildew, and water. Suitable for construction, agricultural, and industrial applications.",
     image: "/other.png",
+    price: 1200,
+    category: "其他帆布",
   },
   {
+    id: "other-tarpaulin-3",
     name: "Waterproof Tarpaulin",
     description: "Advanced waterproof tarps utilizing heat-sealed seams for complete waterproof protection. This property makes these tarps ideal for construction and industrial applications where complete moisture protection is required.",
     image: "/other.png",
+    price: 800,
+    category: "其他帆布",
   },
   {
+    id: "other-tarpaulin-4",
     name: "Heavy Duty Industrial Tarp",
     description: "The highest-quality industrial tarps in terms of strength and durability. Heavy-duty tarps are designed for industrial applications involving heavy loads and contact with hazardous materials.",
     image: "/other.png",
+    price: 500,
+    category: "其他帆布",
   },
 ]
 
@@ -74,22 +86,12 @@ export default function OtherTarpaulinPage() {
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-4xl font-bold text-foreground">Types of Other Tarpaulin</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {productTypes.map((product, index) => (
-              <Card key={index} className="overflow-hidden border border-border shadow-sm transition hover:shadow-lg">
-                <div className="relative h-48 w-full">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="300px" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                  <Button
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={() => setIsDialogOpen(true)}
-                  >
-                    Send Inquiry Now
-                  </Button>
-                </CardContent>
-              </Card>
+            {productTypes.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onInquiry={() => setIsDialogOpen(true)}
+              />
             ))}
           </div>
           

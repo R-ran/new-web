@@ -4,29 +4,41 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { ProductCard } from "@/components/products/product-card"
 import { InquiryDialog } from "@/components/inquiry-dialog"
 
 const productTypes = [
   {
+    id: "snow-tarp-1",
     name: "Heavy-Duty Snow Removal Tarp",
     description: "This is the highest-quality snow tarp designed for winter protection and construction applications. Heavy-duty snow tarps are designed to be resistant to extreme cold, moisture, and heavy snow loads.",
     image: "/snow.jpg",
+    price: 1800,
+    category: "雪布",
   },
   {
+    id: "snow-tarp-2",
     name: "Winter Protection Tarp",
     description: "Specialized tarps designed for winter protection of equipment, construction sites, and outdoor storage. Features enhanced cold resistance and durability for harsh winter conditions.",
     image: "/snow.jpg",
+    price: 1500,
+    category: "雪布",
   },
   {
+    id: "snow-tarp-3",
     name: "Snow-Resistant Construction Tarp",
     description: "Heavy-duty tarps specifically designed for construction sites during winter months. Provides excellent protection from snow, ice, and freezing temperatures while maintaining structural integrity.",
     image: "/snow.jpg",
+    price: 1200,
+    category: "雪布",
   },
   {
+    id: "snow-tarp-4",
     name: "Cold Weather Protective Cover",
     description: "Advanced protective covers designed to withstand extreme cold temperatures and heavy snow accumulation. Ideal for long-term outdoor protection during winter seasons.",
     image: "/snow.jpg",
+    price: 800,
+    category: "雪布",
   },
 ]
 
@@ -73,22 +85,12 @@ export default function SnowTarpPage() {
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-4xl font-bold text-foreground">Types of Snow Tarp</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {productTypes.map((product, index) => (
-              <Card key={index} className="overflow-hidden border border-border shadow-sm transition hover:shadow-lg">
-                <div className="relative h-48 w-full">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="300px" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                  <Button
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={() => setIsDialogOpen(true)}
-                  >
-                    Send Inquiry Now
-                  </Button>
-                </CardContent>
-              </Card>
+            {productTypes.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onInquiry={() => setIsDialogOpen(true)}
+              />
             ))}
           </div>
        

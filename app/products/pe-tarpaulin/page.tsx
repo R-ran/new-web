@@ -4,29 +4,41 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { InquiryDialog } from "@/components/inquiry-dialog"
+import { ProductCard } from "@/components/products/product-card"
 
 const productTypes = [
   {
+    id: "pe-tarpaulin-1",
     name: "Fire Resistant Scaffold Sheeting",
     description: "This is a high-quality PE tarpaulin designed for construction applications. Fire-resistant tarps are designed to be resistant to fire, tear, mildew, and chemicals, making them ideal for construction sites and flammable facilities.",
     image: "/ai-technology-quality-control.jpg",
+    price: 1200,
+    category: "PE帆布",
   },
   {
+    id: "pe-tarpaulin-2",
     name: "Flame Retardant Scaffold Sheeting",
     description: "Flame retardant PE tarpaulin is treated with special chemicals to prevent the spread of flames. They are suitable for construction, flammable facilities, and transportation applications where fire safety is critical.",
     image: "/ai-technology-quality-control.jpg",
+    price: 1500,
+    category: "PE帆布",
   },
   {
+    id: "pe-tarpaulin-3",
     name: "Scaffolding Tarpaulin",
     description: "Designed specifically for construction scaffolding protection, these tarps offer excellent weather resistance and durability. Ideal for construction sites and humid areas where moisture protection is essential.",
     image: "/ai-technology-quality-control.jpg",
+    price: 800,
+    category: "PE帆布",
   },
   {
+    id: "pe-tarpaulin-4",
     name: "HDPE Reinforced Green Plastic Sheets",
     description: "Heavy-duty HDPE reinforced tarps with enhanced strength and durability. These tarps are designed for demanding applications including greenhouse markets, industrial use, and long-term outdoor protection.",
     image: "/ai-technology-quality-control.jpg",
+    price: 2000,
+    category: "PE帆布",
   },
 ]
 
@@ -80,22 +92,12 @@ export default function PETarpaulinPage() {
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-4xl font-bold text-foreground">Types of PE Tarpaulin</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {productTypes.map((product, index) => (
-              <Card key={index} className="overflow-hidden border border-border shadow-sm transition hover:shadow-lg">
-                <div className="relative h-48 w-full">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="300px" />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="mb-3 text-lg font-semibold text-foreground">{product.name}</h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                  <Button
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                    onClick={() => setIsDialogOpen(true)}
-                  >
-                    Send Inquiry Now
-                  </Button>
-                </CardContent>
-              </Card>
+            {productTypes.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onInquiry={() => setIsDialogOpen(true)}
+              />
             ))}
           </div>
        
