@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { CheckCircle, XCircle, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,7 +9,7 @@ import Link from "next/link"
 import { useCart } from "@/components/context/cart-context"
 import { useToast } from "@/hooks/use-toast"
 
-export default function CheckoutSuccessPage() {
+function CheckoutSuccessContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { clearCart } = useCart()
@@ -234,6 +234,26 @@ export default function CheckoutSuccessPage() {
         </Button>
       </div>
     </div>
+  )
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container mx-auto px-4 py-16 max-w-2xl">
+          <div className="text-center">
+            <Loader2 className="mx-auto h-16 w-16 text-primary animate-spin mb-4" />
+            <h2 className="text-2xl font-semibold mb-2">Loading...</h2>
+            <p className="text-muted-foreground">
+              Please wait, we are loading your payment information
+            </p>
+          </div>
+        </div>
+      }
+    >
+      <CheckoutSuccessContent />
+    </Suspense>
   )
 }
 
