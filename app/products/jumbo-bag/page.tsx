@@ -14,7 +14,7 @@ const productTypes = [
     description: "Heavy-duty jumbo bags designed for bulk material storage and transportation. These bags feature high load capacity, excellent durability, and secure closure systems for safe handling of various materials.",
     image: "/jumbo-bag.png",
     price: 3000,
-    category: "大袋",
+    category: "Jumbo Bag",
   },
   {
     id: "jumbo-bag-2",
@@ -22,7 +22,7 @@ const productTypes = [
     description: "Food-grade certified jumbo bags suitable for storing and transporting food products, grains, and agricultural materials. Features safe, non-toxic materials and excellent protection properties.",
     image: "/jumbo-bag.png",
     price: 2500,
-    category: "大袋",
+    category: "Jumbo Bag",
   },
   {
     id: "jumbo-bag-3",
@@ -30,7 +30,7 @@ const productTypes = [
     description: "UV-resistant jumbo bags designed for outdoor storage applications. Features enhanced UV protection that prevents material degradation and extends service life in exposed conditions.",
     image: "/jumbo-bag.png",
     price: 2000,
-    category: "大袋",
+    category: "Jumbo Bag",
   },
   {
     id: "jumbo-bag-4",
@@ -38,7 +38,7 @@ const productTypes = [
     description: "Waterproof jumbo bags with sealed construction that provides complete moisture protection. Ideal for storing materials that require protection from water, humidity, and environmental moisture.",
     image: "/jumbo-bag.png",
     price: 1000,
-    category: "大袋",
+    category: "Jumbo Bag",
   },
 ]
 

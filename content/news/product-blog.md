@@ -17,7 +17,7 @@ The difference lies in their **chemistry**. Grade 201 replaces nickel (Ni) with 
 
 For a coastal kitchen hood, this means that 201 will start to tea-stain within months, while **304 stainless steel** will stay clean for over five years.
 
-![Salt Spray Test](https://cdn.yourcompany.com/images/salt-spray.jpg)
+![Salt Spray Test](/solar-panels-laboratory-research.jpg)
 
 ## 304 Stainless Steel vs 201 Stainless Steel
 
@@ -35,7 +35,7 @@ One OEM reduced scrap from **12% to 2%** after switching to our 304 stainless st
 
 When it comes to **food safety**, the difference is non-negotiable. The FDA lists 304 stainless steel as "unrestricted food-contact," while 201 is only conditional. 201 contains **Mn-sulfide inclusions**, which can pit under acidic conditions like citrus, creating breeding grounds for bacteria. Our food-grade 304 stainless steel fittings are vacuum solution-annealed to ≤0.030% carbon, then electropolished to Ra ≤0.38 µm, exceeding **3-A Sanitary 63-03** standards.
 
-![Food-Grade Stainless Steel Fittings](https://cdn.yourcompany.com/images/fittings-3A.jpg)
+![Food-Grade Stainless Steel Fittings](/ai-technology-quality-control.jpg)
 
 ## 201 Stainless Steel vs 304 Stainless Steel
 
@@ -53,7 +53,7 @@ Fleet operators report **1.8x longer life** with our 304 stainless steel exhaust
 
 Every form we sell—304 stainless steel sheet, 304 2B stainless steel, high-quality 304 stainless steel coil, 304 stainless steel exhaust tubing, and food-grade 304 stainless steel fittings—is melted, rolled, and tested to guarantee authentic 304 chemistry. No blended heats, no 201 fallback stock, no shortcuts.
 
-![Material Test Certificates](https://cdn.yourcompany.com/images/mtc-sample.jpg)
+![Material Test Certificates](/business-growth-chart-solar.jpg)
 
 ## Summary & Call to Action
 

@@ -14,7 +14,7 @@ Each product is manufactured with a certified 18% Cr / 8% Ni chemistry for maxim
 ![304 Stainless Steel Products](/shade.png)
 
 
-*304 不锈钢产品示意图*
+*示意图*
 
 ## 304 Stainless Steel Specifications
 
@@ -33,7 +33,7 @@ Why do global OEMs prefer our 304 stainless steel? Its superior performance spea
 
 Need exhaust systems? Our 304 stainless steel exhaust tubing is mandrel-bent, 320-grit OD-polished, and heat-number traceable—ideal for high-performance applications. Similarly, our 304 stainless steel fittings—elbows, tees, tri-clamps—are solution-annealed to ≤0.030% C, preventing intergranular corrosion.
 
-![304 Stainless Steel Coil Slitting](https://cdn.yourcompany.com/images/coil-slitting.jpg)
+![304 Stainless Steel Coil Slitting](/solar-factory-manufacturing-facility.jpg)
 
 Whether you’re bidding on a 50-ton brewery project or quoting for a kitchen hood, **304 stainless steel** is the perfect choice, delivering the lowest lifecycle cost. Every lot ships with mill certificates, REACH/RoHS, and SGS inspection reports—ensuring no mixed-grade substitutions.
 

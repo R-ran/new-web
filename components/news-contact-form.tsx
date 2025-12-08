@@ -36,6 +36,37 @@ export function NewsContactForm() {
     }
   }
 
+  // 自定义验证消息
+  const handleInvalid = (e: React.InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.preventDefault()
+    const field = e.currentTarget
+    const fieldName = field.getAttribute('data-field-name') || field.name || 'This field'
+    
+    // 根据字段类型设置不同的提示信息
+    let message = ''
+    if (field.type === 'email') {
+      message = 'Please enter a valid email address.'
+    } else if (field.id === 'name') {
+      message = 'Please enter your name.'
+    } else if (field.id === 'message') {
+      message = 'Please enter your message.'
+    } else {
+      message = `Please fill in ${fieldName}.`
+    }
+    
+    field.setCustomValidity(message)
+    
+    // 显示自定义提示
+    if (field.reportValidity) {
+      field.reportValidity()
+    }
+  }
+
+  // 清除自定义验证消息（当用户开始输入时）
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.currentTarget.setCustomValidity('')
+  }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
@@ -46,7 +77,11 @@ export function NewsContactForm() {
           id="name"
           type="text"
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onChange={(e) => {
+            handleInput(e)
+            setFormData({ ...formData, name: e.target.value })
+          }}
+          onInvalid={handleInvalid}
           className="h-10 text-sm"
           required
         />
@@ -60,7 +95,11 @@ export function NewsContactForm() {
           id="email"
           type="email"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={(e) => {
+            handleInput(e)
+            setFormData({ ...formData, email: e.target.value })
+          }}
+          onInvalid={handleInvalid}
           className="h-10 text-sm"
           required
         />
@@ -87,7 +126,11 @@ export function NewsContactForm() {
           id="message"
           rows={4}
           value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          onChange={(e) => {
+            handleInput(e)
+            setFormData({ ...formData, message: e.target.value })
+          }}
+          onInvalid={handleInvalid}
           className="text-sm resize-none"
           required
         />

@@ -14,7 +14,7 @@ const productTypes = [
     description: "This is a high-quality PE tarpaulin designed for construction applications. Fire-resistant tarps are designed to be resistant to fire, tear, mildew, and chemicals, making them ideal for construction sites and flammable facilities.",
     image: "/ai-technology-quality-control.jpg",
     price: 1200,
-    category: "PE帆布",
+    category: "PE Tarpaulin",
   },
   {
     id: "pe-tarpaulin-2",
@@ -22,7 +22,7 @@ const productTypes = [
     description: "Flame retardant PE tarpaulin is treated with special chemicals to prevent the spread of flames. They are suitable for construction, flammable facilities, and transportation applications where fire safety is critical.",
     image: "/ai-technology-quality-control.jpg",
     price: 1500,
-    category: "PE帆布",
+    category: "PE Tarpaulin",
   },
   {
     id: "pe-tarpaulin-3",
@@ -30,7 +30,7 @@ const productTypes = [
     description: "Designed specifically for construction scaffolding protection, these tarps offer excellent weather resistance and durability. Ideal for construction sites and humid areas where moisture protection is essential.",
     image: "/ai-technology-quality-control.jpg",
     price: 800,
-    category: "PE帆布",
+    category: "PE Tarpaulin",
   },
   {
     id: "pe-tarpaulin-4",
@@ -38,7 +38,7 @@ const productTypes = [
     description: "Heavy-duty HDPE reinforced tarps with enhanced strength and durability. These tarps are designed for demanding applications including greenhouse markets, industrial use, and long-term outdoor protection.",
     image: "/ai-technology-quality-control.jpg",
     price: 2000,
-    category: "PE帆布",
+    category: "PE Tarpaulin",
   },
 ]
 

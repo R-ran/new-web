@@ -116,9 +116,9 @@ export function MarkdownRenderer({ content, className = '' }: MarkdownRendererPr
             <em className="italic text-slate-700 markdown-caption-text" data-caption="true" {...props} />
           ),
 
-          // Links
+          // 超链接
           a: (props: any) => (
-            <a className="text-primary hover:underline" {...props} />
+            <a className="text-blue-500 hover:underline" {...props} />
           ),
 
           // Blockquotes

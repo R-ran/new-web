@@ -41,64 +41,84 @@ const categories = [
 // 改为手动定义的产品数组
 const PRODUCTS = [
   {
+    id: "product-1",
     name: "Fire Resistant Scaffold Sheeting ",
     category: "PE Tarpaulin",
     application: "Construction",
     image: "/ai-technology-quality-control.jpg",
+    price: 1200,
   },
   {
+    id: "product-2",
     name: "Shade Net",
     category: "Netting",
     application: "Solar Farm, Greenhouse, Construction",
     image: "/shade.png",
+    price: 600,
   },
   {
+    id: "product-3",
     name: "Heavy-Duty Snow Removal Tarp",
     category: "Snow Tarp",
     application: "Winter Protection, Construction",
     image: "/snow.jpg",
+    price: 1500,
   },
   {
+    id: "product-4",
     name: "PVC Tarpaulin Roll",
     category: "Other Tarpaulin",
     application: "Tent, Truck, Shading",
     image: "/other.png",
+    price: 900,
   },
   {
+    id: "product-5",
     name: "Jumbo Bag",
     category: "Jumbo Bag",
     application: "Bulk Material Storage, Transportation",
     image: "/jumbo-bag.png",
+    price: 3000,
   },
   {
+    id: "product-6",
     name: "Flame Retardant Scaffold Sheeting",
     category: "PE Tarpaulin",
     application: "Construction, Flammable facility, Transportation",
     image: "/ai-technology-quality-control.jpg",
-  },{
+    price: 1500,
+  },
+  {
+    id: "product-7",
     name: "Scaffolding Tarpaulin ",
     category: "PE Tarpaulin",
     application: "Construction, Humid areas",
     image: "/ai-technology-quality-control.jpg",
+    price: 800,
   },
-  // 在这里继续添加更多产品...
   {
+    id: "product-8",
     name: "HDPE Reinforced Green Plastic Sheets Strong Leno Tarpaulin",
     category: "PE Tarpaulin",
     application: "Germany Greenhouse Market",
     image: "/ai-technology-quality-control.jpg",
+    price: 2000,
   },
   {
+    id: "product-9",
     name: "Safety Net",
     category: "Netting",
     application: "Safety, Fencing, Packaging",
     image: "/safety.png",
+    price: 800,
   },
   {
+    id: "product-10",
     name: "Mesh Net",
     category: "Netting",
     application: "Safety, Fencing, Packaging",
     image: "/mesh.png",
+    price: 450,
   },
 ]
 // 根据实际产品数量计算分页
@@ -205,20 +225,29 @@ export default function ProductsPageContent() {
               {paginatedProducts.map((product, index) => {
                 const globalIndex = (currentPage - 1) * ITEMS_PER_PAGE + index
                 return (
-                <Card key={`${product.name}-${globalIndex}`} className="overflow-hidden border border-border shadow-sm transition hover:shadow-md">
+                <Card key={`${product.id || product.name}-${globalIndex}`} className="overflow-hidden border border-border shadow-sm transition hover:shadow-md">
                   <CardContent className="p-0">
                     <div className="relative h-48 w-full">
                       <Image src={product.image} alt={product.name} fill className="object-cover" sizes="330px" />
                     </div>
                     <div className="space-y-4 p-4">
                       <div>
-                        
                         <h3 className="mt-2 text-base font-semibold text-foreground">{product.name}</h3>
                       </div>
                       <div className="space-y-1 text-xs text-muted-foreground">
                         <p>Category: {product.category}</p>
                         <p>Application: {product.application}</p>
                       </div>
+                      {product.price && (
+                        <div className="flex items-center justify-between border-t pt-3">
+                          <div className="text-xl font-bold text-primary">
+                            ¥{product.price.toLocaleString()}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            MOQ: 1 piece
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

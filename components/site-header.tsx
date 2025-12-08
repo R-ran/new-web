@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo, useState } from "react"
-import { Menu, X, ChevronDown, ShoppingBag } from "lucide-react"
+import { useMemo, useState, useEffect } from "react"
+import { Menu, X, ChevronDown, ShoppingBag, Languages } from "lucide-react"
 import { useCart } from "@/components/context/cart-context"
+import { changeLanguage } from "@/components/GoogleTranslate"
 
 type NavChild = {
   label: string
@@ -19,8 +20,43 @@ type NavItem = {
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null)
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false)
+  const [currentLang, setCurrentLang] = useState<string>("en")
   const { getItemCount } = useCart()
   const itemCount = getItemCount()
+
+  const languages = [
+    { code: "en", label: "English", flag: "🇬🇧" },
+    { code: "ru", label: "Русский", flag: "🇷🇺" },
+    { code: "es", label: "Español", flag: "🇪🇸" },
+    { code: "fr", label: "Français", flag: "🇫🇷" },
+  ]
+
+  useEffect(() => {
+    // 从 cookie 或 localStorage 获取当前语言
+    if (typeof window !== "undefined") {
+      const lang = localStorage.getItem("lang") || "en"
+      setCurrentLang(lang)
+    }
+  }, [])
+
+  // 点击外部区域关闭语言菜单
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (isLangMenuOpen && !target.closest('[data-lang-menu]')) {
+        setIsLangMenuOpen(false)
+      }
+    }
+
+    if (isLangMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isLangMenuOpen])
 
   const navItems = useMemo<NavItem[]>(
     () => [
@@ -107,6 +143,45 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
+          {/* 语言选择器 */}
+          <div className="relative flex items-center" data-lang-menu>
+            <button
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+              aria-label="Select language"
+            >
+              <Languages className="h-5 w-5" />
+              <span className="hidden sm:inline">
+                {languages.find((lang) => lang.code === currentLang)?.flag || "🌐"}
+              </span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${isLangMenuOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            </button>
+            {isLangMenuOpen && (
+              <div className="absolute right-0 top-full z-20 mt-1 w-40 origin-top scale-100 rounded-md border bg-white p-2 shadow-lg">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setCurrentLang(lang.code)
+                      setIsLangMenuOpen(false)
+                      changeLanguage(lang.code)
+                      localStorage.setItem("lang", lang.code)
+                    }}
+                    className={`w-full rounded px-3 py-2 text-left text-sm transition-colors hover:bg-primary/10 hover:text-primary ${
+                      currentLang === lang.code ? "bg-primary/10 text-primary font-medium" : "text-muted-foreground"
+                    }`}
+                  >
+                    <span className="mr-2">{lang.flag}</span>
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <Link href="/cart" className="relative flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
             <ShoppingBag className="h-5 w-5" />
             Cart
@@ -168,6 +243,32 @@ export function SiteHeader() {
               </div>
             ))}
             <div className="mt-4 flex flex-col gap-4 border-t pt-4">
+              {/* 移动端语言选择器 */}
+              <div className="flex flex-col gap-2">
+                <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Language</div>
+                <div className="grid grid-cols-2 gap-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setCurrentLang(lang.code)
+                        closeMobileMenu()
+                        changeLanguage(lang.code)
+                        localStorage.setItem("lang", lang.code)
+                      }}
+                      className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-primary/10 hover:text-primary ${
+                        currentLang === lang.code
+                          ? "bg-primary/10 text-primary font-medium"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <Link
                 href="/cart"
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"

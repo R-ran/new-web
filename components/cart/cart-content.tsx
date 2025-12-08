@@ -15,13 +15,13 @@ export function CartContent() {
     return (
       <div className="text-center py-16">
         <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground mb-4" />
-        <h2 className="text-2xl font-semibold mb-2">购物车是空的</h2>
+        <h2 className="text-2xl font-semibold mb-2">The cart is empty</h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-          您还没有添加任何商品到购物车。浏览我们的产品页面，找到您需要的太阳能产品。
+          You haven't added any products to the cart. Browse our product page, find the product you need.
         </p>
         <Button asChild size="lg">
           <Link href="/products">
-            浏览产品
+            Browse products
           </Link>
         </Button>
       </div>
@@ -136,11 +136,11 @@ export function CartContent() {
             onClick={clearCart}
             className="text-destructive hover:text-destructive"
           >
-            清空购物车
+            Clear cart
           </Button>
           <Button variant="outline" asChild>
             <Link href="/products">
-              继续购物
+              Continue shopping
             </Link>
           </Button>
         </div>
@@ -150,7 +150,7 @@ export function CartContent() {
       <div className="lg:col-span-1">
         <Card className="sticky top-4">
           <CardHeader>
-            <CardTitle>订单摘要</CardTitle>
+            <CardTitle>Order summary</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
@@ -159,7 +159,7 @@ export function CartContent() {
                   <span className="text-muted-foreground">
                     {item.name} × {item.quantity}
                   </span>
-                  <span>¥{(item.price * item.quantity).toLocaleString()}</span>
+                  <span>${(item.price * item.quantity).toLocaleString()}</span>
                 </div>
               ))}
             </div>
@@ -168,30 +168,30 @@ export function CartContent() {
 
             <div className="space-y-2">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">商品小计</span>
-                <span>¥{state.total.toLocaleString()}</span>
+                <span className="text-muted-foreground">Subtotal</span>
+                <span>${state.total.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">运费</span>
-                <span>免费</span>
+                <span className="text-muted-foreground">Shipping</span>
+                <span>Free</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">税费</span>
-                <span>¥0</span>
+                <span className="text-muted-foreground">Tax</span>
+                <span>$0</span>
               </div>
             </div>
 
             <Separator />
 
             <div className="flex justify-between text-lg font-semibold">
-              <span>总计</span>
-              <span>¥{state.total.toLocaleString()}</span>
+              <span>Total</span>
+              <span>${state.total.toLocaleString()}</span>
             </div>
           </CardContent>
           <CardFooter>
             <Button asChild className="w-full" size="lg">
               <Link href="/checkout">
-                前往结算
+                Go to checkout
               </Link>
             </Button>
           </CardFooter>

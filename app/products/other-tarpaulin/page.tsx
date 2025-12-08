@@ -14,7 +14,7 @@ const productTypes = [
     description: "High-quality PVC tarpaulin available in rolls for various applications. These tarps are ideal for tents, truck covers, and shading applications with excellent durability and weather resistance.",
     image: "/other.png",
     price: 1500,
-    category: "其他帆布",
+    category: "Other Tarpaulin",
   },
   {
     id: "other-tarpaulin-2",
@@ -22,7 +22,7 @@ const productTypes = [
     description: "Vinyl coated tarps with enhanced strength and durability. Features increased resistance to heavy abrasion, UV rays, oil, mildew, and water. Suitable for construction, agricultural, and industrial applications.",
     image: "/other.png",
     price: 1200,
-    category: "其他帆布",
+    category: "Other Tarpaulin",
   },
   {
     id: "other-tarpaulin-3",
@@ -30,7 +30,7 @@ const productTypes = [
     description: "Advanced waterproof tarps utilizing heat-sealed seams for complete waterproof protection. This property makes these tarps ideal for construction and industrial applications where complete moisture protection is required.",
     image: "/other.png",
     price: 800,
-    category: "其他帆布",
+    category: "Other Tarpaulin",
   },
   {
     id: "other-tarpaulin-4",
@@ -38,7 +38,7 @@ const productTypes = [
     description: "The highest-quality industrial tarps in terms of strength and durability. Heavy-duty tarps are designed for industrial applications involving heavy loads and contact with hazardous materials.",
     image: "/other.png",
     price: 500,
-    category: "其他帆布",
+    category: "Other Tarpaulin",
   },
 ]
 

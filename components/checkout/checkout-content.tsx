@@ -25,8 +25,8 @@ import * as z from "zod"
 import { useToast } from "@/hooks/use-toast"
 
 const checkoutFormSchema = z.object({
-  firstName: z.string().min(2, "名字至少需要2个字符"),
-  lastName: z.string().min(2, "姓氏至少需要2个字符"),
+  firstName: z.string().min(1, "名字至少需要1个字符"),
+  lastName: z.string().min(1, "姓氏至少需要1个字符"),
   email: z.string().email("请输入有效的邮箱地址"),
   phone: z.string().min(10, "请输入有效的电话号码"),
   company: z.string().optional(),
@@ -66,13 +66,13 @@ export function CheckoutContent() {
     return (
       <div className="text-center py-16">
         <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground mb-4" />
-        <h2 className="text-2xl font-semibold mb-2">购物车是空的</h2>
+        <h2 className="text-2xl font-semibold mb-2">The cart is empty</h2>
         <p className="text-muted-foreground mb-8">
-          请先添加商品到购物车再进行结算
+          Please add products to the cart before checking out
         </p>
         <Button asChild size="lg">
           <Link href="/products">
-            浏览产品
+            Browse products
           </Link>
         </Button>
       </div>
@@ -83,24 +83,24 @@ export function CheckoutContent() {
     return (
       <div className="text-center py-16 max-w-2xl mx-auto">
         <CheckCircle className="mx-auto h-24 w-24 text-green-500 mb-4" />
-        <h2 className="text-3xl font-semibold mb-4">订单提交成功！</h2>
+        <h2 className="text-3xl font-semibold mb-4">Order submitted successfully!</h2>
         <p className="text-muted-foreground mb-8">
-          感谢您的订单！我们的客服团队将在24小时内与您联系确认订单详情和配送信息。
+          Thank you for your order! Our customer service team will contact you within 24 hours to confirm the order details and shipping information.
         </p>
 
         <div className="bg-muted rounded-lg p-6 text-left mb-8">
-          <h3 className="font-semibold mb-4">订单详情</h3>
+          <h3 className="font-semibold mb-4">Order details</h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">订单编号：</span>
+              <span className="text-muted-foreground">Order number:</span>
               <span className="font-mono">JK{Date.now()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">订单金额：</span>
-              <span className="font-semibold">¥{state.total.toLocaleString()}</span>
+              <span className="text-muted-foreground">Order amount:</span>
+              <span className="font-semibold">${state.total.toLocaleString()}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">商品数量：</span>
+              <span className="text-muted-foreground">Product quantity:</span>
               <span>{state.items.reduce((sum, item) => sum + item.quantity, 0)} 件</span>
             </div>
           </div>
@@ -109,12 +109,12 @@ export function CheckoutContent() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild variant="outline">
             <Link href="/products">
-              继续购物
+              Continue shopping
             </Link>
           </Button>
           <Button asChild>
             <Link href="/">
-              返回首页
+              Return to home page
             </Link>
           </Button>
         </div>
@@ -135,30 +135,50 @@ export function CheckoutContent() {
         orderDate: new Date().toISOString(),
       }
 
-      // 在实际应用中，这里会调用API将订单数据保存到数据库
-      console.log('订单数据:', orderData)
+      // 将订单数据保存到 sessionStorage，以便支付完成后使用
+      sessionStorage.setItem('pendingOrder', JSON.stringify(orderData))
 
-      // 模拟API调用延迟
-      await new Promise(resolve => setTimeout(resolve, 2000))
-
-      // 显示成功提示
-      toast({
-        title: "订单提交成功",
-        description: "我们已收到您的订单，将尽快与您联系。",
+      // 创建 PayPal 订单
+      const createOrderResponse = await fetch('/api/paypal/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: state.total,
+          currency: 'USD',
+          items: state.items.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+          })),
+        }),
       })
 
-      // 清空购物车并显示订单成功页面
-      clearCart()
-      setOrderCompleted(true)
+      if (!createOrderResponse.ok) {
+        const errorData = await createOrderResponse.json()
+        throw new Error(errorData.error || '创建支付订单失败')
+      }
 
-    } catch (error) {
-      console.error('提交订单失败:', error)
+      const { orderId, approvalUrl } = await createOrderResponse.json()
+
+      if (!approvalUrl) {
+        throw new Error('无法获取支付链接')
+      }
+
+      // 保存 PayPal 订单 ID
+      sessionStorage.setItem('paypalOrderId', orderId)
+
+      // 重定向到 PayPal 支付页面
+      window.location.href = approvalUrl
+
+    } catch (error: any) {
+      console.error('Order submission failed:', error)
       toast({
-        title: "订单提交失败",
-        description: "请检查网络连接或稍后重试。",
+        title: "Order submission failed",
+        description: error.message || "Please check your network connection or try again later.",
         variant: "destructive",
       })
-    } finally {
       setIsSubmitting(false)
     }
   }
@@ -339,7 +359,7 @@ export function CheckoutContent() {
                 size="lg"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "提交中..." : "提交订单"}
+                {isSubmitting ? "正在跳转到支付..." : "前往 PayPal 支付"}
               </Button>
             </div>
           </form>

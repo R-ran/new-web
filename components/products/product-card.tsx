@@ -40,8 +40,8 @@ export function ProductCard({ product, onInquiry, showPrice = true }: ProductCar
     addItem(cartItem)
 
     toast({
-      title: "添加到购物车成功",
-      description: `${product.name} 已添加到购物车`,
+      title: "Added to cart successfully",
+      description: `${product.name} has been added to the cart successfully`,
     })
   }
 
@@ -71,7 +71,7 @@ export function ProductCard({ product, onInquiry, showPrice = true }: ProductCar
               ¥{product.price.toLocaleString()}
             </div>
             <div className="text-sm text-muted-foreground">
-              起订量：1件
+              MOQ: 1 piece
             </div>
           </div>
         )}
@@ -84,7 +84,7 @@ export function ProductCard({ product, onInquiry, showPrice = true }: ProductCar
               disabled={!product.price}
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
-              {product.price ? "加入购物车" : "联系询价"}
+              {product.price ? "Add to Cart" : "Contact for Pricing"}
             </Button>
           ) : (
             <Button
@@ -104,7 +104,7 @@ export function ProductCard({ product, onInquiry, showPrice = true }: ProductCar
               onClick={onInquiry}
             >
               <MessageCircle className="mr-2 h-4 w-4" />
-              咨询详情
+               Send Inquiry Now
             </Button>
           )}
         </div>

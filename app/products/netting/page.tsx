@@ -14,7 +14,7 @@ const productTypes = [
     description: "High-quality shade netting designed for solar farms, greenhouses, and construction applications. Provides excellent UV protection and temperature control while allowing air circulation.",
     image: "/shade.png",
     price: 600,
-    category: "网状产品",
+    category: "Netting",
   },
   {
     id: "netting-2",
@@ -22,7 +22,7 @@ const productTypes = [
     description: "Durable safety netting designed for construction sites, sports facilities, and industrial applications. Provides reliable protection and fall prevention with high strength and weather resistance.",
     image: "/mesh.png",
     price: 800,
-    category: "网状产品",
+    category: "Netting",
   },
   {
     id: "netting-3",
@@ -30,7 +30,7 @@ const productTypes = [
     description: "Versatile mesh netting suitable for packaging, fencing, and agricultural applications. Features excellent breathability and durability for various industrial and commercial uses.",
     image: "/mesh.png",
     price: 450,
-    category: "网状产品",
+    category: "Netting",
   },
   {
     id: "netting-4",
@@ -38,7 +38,7 @@ const productTypes = [
     description: "Specialized netting for agricultural applications including crop protection, bird control, and greenhouse covering. Designed to withstand outdoor conditions while protecting crops.",
     image: "/shade.png",
     price: 700,
-    category: "网状产品",
+    category: "Netting",
   },
 ]
 

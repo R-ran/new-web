@@ -14,7 +14,7 @@ const productTypes = [
     description: "This is the highest-quality snow tarp designed for winter protection and construction applications. Heavy-duty snow tarps are designed to be resistant to extreme cold, moisture, and heavy snow loads.",
     image: "/snow.jpg",
     price: 1800,
-    category: "雪布",
+    category: "Snow Tarp",
   },
   {
     id: "snow-tarp-2",
@@ -22,7 +22,7 @@ const productTypes = [
     description: "Specialized tarps designed for winter protection of equipment, construction sites, and outdoor storage. Features enhanced cold resistance and durability for harsh winter conditions.",
     image: "/snow.jpg",
     price: 1500,
-    category: "雪布",
+    category: "Snow Tarp",
   },
   {
     id: "snow-tarp-3",
@@ -30,7 +30,7 @@ const productTypes = [
     description: "Heavy-duty tarps specifically designed for construction sites during winter months. Provides excellent protection from snow, ice, and freezing temperatures while maintaining structural integrity.",
     image: "/snow.jpg",
     price: 1200,
-    category: "雪布",
+    category: "Snow Tarp",
   },
   {
     id: "snow-tarp-4",
@@ -38,7 +38,7 @@ const productTypes = [
     description: "Advanced protective covers designed to withstand extreme cold temperatures and heavy snow accumulation. Ideal for long-term outdoor protection during winter seasons.",
     image: "/snow.jpg",
     price: 800,
-    category: "雪布",
+    category: "Snow Tarp",
   },
 ]
 
