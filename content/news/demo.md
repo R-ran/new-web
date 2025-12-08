@@ -4,7 +4,7 @@ description: "Expansion-shell rock bolts provide immediate anchoring and reliabl
 slug: "expansion-shell-rock-bolt-tunnel-slope-stabilization-applications"
 category: []
 date: "2025-12-04"
-author: "xhbolt001"
+author: "001"
 ---
 
 # What Makes Expansion-shell Rock Bolts Ideal for Tunnel and Slope Stabilization
